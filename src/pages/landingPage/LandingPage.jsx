@@ -3,8 +3,8 @@ import React from 'react'
 
 const LandingPage = () => {
     return (
-        <div className=''>
-            LandingPage
+        <div className=' flex justify-center items-center'>
+            <Button className=' bg-orange-400 cursor-pointer'>Invoice Generator</Button>
         </div>
     )
 }
