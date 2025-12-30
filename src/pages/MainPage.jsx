@@ -1,4 +1,5 @@
 import InvoiceForm from '@/components/InvoiceForm';
+import TemplateGrid from '@/components/TemplateGrid';
 import { Button } from '@/components/ui/button';
 import { AppContext } from '@/context/AppContext';
 import { Pencil } from 'lucide-react';
@@ -54,7 +55,7 @@ const MainPage = () => {
           {/* Title form */}
           <div className='border-2 border-gray-200 p-3 w-full'>
             <div>
-              Title form
+              <TemplateGrid/>
             </div>
           </div>
         </div>

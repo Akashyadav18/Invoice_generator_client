@@ -13,3 +13,10 @@ export const assets = {
     upload,
     logo
 }
+
+export const templates = [
+    {id: "template1", label: "Template 1", image: assets.template1},
+    {id: "template2", label: "Template 2", image: assets.template2},
+    {id: "template3", label: "Template 3", image: assets.template3},
+    {id: "template4", label: "Template 4", image: assets.template4},
+]

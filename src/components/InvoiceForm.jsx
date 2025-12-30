@@ -1,9 +1,27 @@
 import { assets } from '@/assets/assets'
-import React from 'react'
-import { Button } from './ui/button'
+import React, { useContext } from 'react'
 import { Trash2 } from 'lucide-react'
+import { AppContext } from '@/context/AppContext'
 
 const InvoiceForm = () => {
+
+    const { invoiceData, setInvoiceData } = useContext(AppContext);
+
+    const addItem = () => {
+        setInvoiceData((prev) => ({
+            ...prev,
+            items: [
+                ...prev.items,
+                {name:"", qty:"", amount:"", total:0, description:""},
+            ]
+        }))
+    }
+
+    const deleteItem = (index) => {
+        const items = invoiceData.items.filter((_, i) => i !== index);
+        setInvoiceData((prev) => ({...prev, items}))
+    }
+
     return (
         <div className=''>
             {/* company logo */}
@@ -70,21 +88,25 @@ const InvoiceForm = () => {
             {/* item detail */}
             <div className=' p-2'>
                 <h5 className=' font-semibold mb-1'>Item Detail</h5>
-                <div className=''>
-                    <div className=' md:flex gap-12 mb-1.5'>
-                        <input type='text' placeholder='Item Name' className=' border p-1 w-full md:w-2xs' />
-                        <input type='number' placeholder='qty' className=' border p-1 w-full md:w-2xs' />
+                {invoiceData.items.map((item, index) => (
+                    <div key={index} className=' border border-gray-400 py-2 p-0.5 mb-2'>
+                        <div className=' md:flex gap-12 mb-1.5'>
+                            <input type='text' placeholder='Item Name' className=' border p-1 w-full md:w-2xs' />
+                            <input type='number' placeholder='qty' className=' border p-1 w-full md:w-2xs' />
+                        </div>
+                        <div className=' md:flex gap-12 mb-1.5'>
+                            <input type='number' placeholder='Amount' className='  border p-1 w-full md:w-2xs' />
+                            <input type='number' placeholder='Total' className='  border p-1 w-full md:w-2xs' />
+                        </div>
+                        <div className=' md:flex justify-between items-center'>
+                            <textarea placeholder='Description' rows={3} cols={5} className=' border p-1 w-full md:w-xl'></textarea>
+                            {invoiceData.items.length > 1 && (
+                                <button onClick={() => deleteItem(index)} className=' cursor-pointer hover:text-red-700 p-2 text-red-500'> <Trash2 /> </button>
+                            )}
+                        </div>
                     </div>
-                    <div className=' md:flex gap-12 mb-1.5'>
-                        <input type='number' placeholder='Amount' className='  border p-1 w-full md:w-2xs' />
-                        <input type='number' placeholder='Total' className='  border p-1 w-full md:w-2xs' />
-                    </div>
-                    <div className=' md:flex justify-between items-center'>
-                        <textarea placeholder='Description' rows={3} cols={5} className=' border p-1 w-full md:w-xl'></textarea>
-                        <button className=' cursor-pointer hover:text-red-700 p-2 text-red-500'> <Trash2 /> </button>
-                    </div>
-                </div>
-                <Button className=' border mt-2 bg-sky-600 text-white px-2.5 py-1 cursor-pointer'>Add Item</Button>
+                ))}
+                <button onClick={addItem} className=' border mt-2 bg-sky-600 text-white px-2.5 py-1 cursor-pointer'>Add Item</button>
             </div>
             {/* bank account info */}
             <div className=' p-2'>

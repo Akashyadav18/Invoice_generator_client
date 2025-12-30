@@ -2,12 +2,32 @@ import React, { createContext, useState } from 'react'
 
 export const AppContext = createContext();
 
+export const initialInvoiceData = {
+    title: "New Invoice",
+    logo: "",
+    company: {name:"", number:"", address:""},
+    billing: {name:"", number:"", address:""},
+    shipping: {name:"", number:"", address:""},
+    invoice: {number:"", date:"", dueDate:""},
+    items: [
+        {name:"", qty:"", amount:"", total:0, description:""}
+    ],
+    account: {name:"", number:"", ifscCode:""},
+    tax:0,
+    notes: ""
+}
+
 export const AppContextProvider = ({children}) => {
 
     const [invoiceTitle, setInvoiceTitle] = useState("New Invoice");
+    const [invoiceData, setInvoiceData] = useState(initialInvoiceData);
+    const [selectedTemplate, setSelectedTemplate] = useState("template1");
 
     const contextValue = {
-        invoiceTitle, setInvoiceTitle
+        invoiceTitle, setInvoiceTitle,
+        invoiceData, setInvoiceData,
+        selectedTemplate, setSelectedTemplate,
+        initialInvoiceData
     }
 
     return (
