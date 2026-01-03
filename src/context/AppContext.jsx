@@ -5,9 +5,9 @@ export const AppContext = createContext();
 export const initialInvoiceData = {
     title: "New Invoice",
     logo: "",
-    company: {name:"", number:"", address:""},
-    billing: {name:"", number:"", address:""},
-    shipping: {name:"", number:"", address:""},
+    company: {name:"", phone:"", address:""},
+    billing: {name:"", phone:"", address:""},
+    shipping: {name:"", phone:"", address:""},
     invoice: {number:"", date:"", dueDate:""},
     items: [
         {name:"", qty:"", amount:"", total:0, description:""}
