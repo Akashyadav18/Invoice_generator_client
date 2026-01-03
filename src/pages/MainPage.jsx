@@ -9,11 +9,21 @@ const MainPage = () => {
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
 
-  const {invoiceTitle, setInvoiceTitle} = useContext(AppContext);
+  const {invoiceTitle, setInvoiceTitle, setInvoiceData, setSelectedTemplate} = useContext(AppContext);
+
+  const handleTemplateClick = (templateId) => {
+    setSelectedTemplate(templateId);
+    console.log(templateId);
+    
+  }
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     setInvoiceTitle(newTitle);
+    setInvoiceData((prev) => ({
+      ...prev,
+      title: newTitle
+    }))
   }
   const handleTitleEdit = () => {
     setIsEditingTitle(true)
@@ -55,7 +65,7 @@ const MainPage = () => {
           {/* Title form */}
           <div className='border-2 border-gray-200 p-3 w-full'>
             <div>
-              <TemplateGrid/>
+              <TemplateGrid onTemplateClick={handleTemplateClick}/>
             </div>
           </div>
         </div>
