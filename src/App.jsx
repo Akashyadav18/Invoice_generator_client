@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<LandingPage/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/generate' element={<MainPage/>}/>
-          <Route path='preview' element={<PreviewPage/>}/>
+          <Route path='/preview' element={<PreviewPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

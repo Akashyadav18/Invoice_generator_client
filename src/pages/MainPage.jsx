@@ -4,17 +4,27 @@ import { Button } from '@/components/ui/button';
 import { AppContext } from '@/context/AppContext';
 import { Pencil } from 'lucide-react';
 import React, { useContext, useState } from 'react'
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
 
+  const navigate = useNavigate();
+
   const [isEditingTitle, setIsEditingTitle] = useState(false);
 
-  const {invoiceTitle, setInvoiceTitle, setInvoiceData, setSelectedTemplate} = useContext(AppContext);
+  const {invoiceTitle, setInvoiceTitle, invoiceData, setInvoiceData, setSelectedTemplate} = useContext(AppContext);
 
   const handleTemplateClick = (templateId) => {
+    const hasInvalidItem = invoiceData.items.some(
+      (item) => !item.qty || !item.amount
+    );
+    if(hasInvalidItem) {
+      toast.error("Please enter quantity and amount for all items")
+      return;
+    }
     setSelectedTemplate(templateId);
-    console.log(templateId);
-    
+    navigate('/preview')
   }
 
   const handleTitleChange = (e) => {
