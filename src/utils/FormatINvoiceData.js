@@ -1,4 +1,6 @@
 export const formatInvoiceData = (invoiceData) => {
+    // This is just destructuring (reading), NOT duplicating state.
+    //So, instead of writing -> {invoiceData.company.name} in previewPage we can directly write -> {companyName}
     const {
         title,
         company = {},
@@ -20,6 +22,7 @@ export const formatInvoiceData = (invoiceData) => {
 
     return {
         title,
+        logo,
         companyName: company.name,
         companyAddress: company.address,
         companyPhone: company.phone,
@@ -31,7 +34,7 @@ export const formatInvoiceData = (invoiceData) => {
 
         accountName: account.name,
         accountNumber: account.number,
-        accountIfscCode: account.ifsccode,
+        accountIfscCode: account.ifscCode,
 
         billingName: billing.name,
         billingAddress: billing.address,

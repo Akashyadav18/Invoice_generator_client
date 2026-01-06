@@ -88,7 +88,7 @@ const InvoiceForm = () => {
                 <h5 className=' font-semibold mb-1'>Company logo</h5>
                 <div className=''>
                     <label htmlFor='img' className=''>
-                        <img src={invoiceData.logo ? invoiceData.logo : assets.upload} alt='upload' className=' w-20 cursor-pointer' />
+                        <img src={invoiceData.logo ? invoiceData.logo : assets.upload} alt='upload' className=' w-20 cursor-pointer rounded-full' />
                     </label>
                     <input type='file' name='logo' id='img' hidden accept='image/*' 
                         onChange={handleLogoUpload}

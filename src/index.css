@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@layer components{
+    .template1-color{
+        @apply text-orange-600;
+    }
+}
