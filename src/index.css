@@ -5,4 +5,20 @@
     .template1-color{
         @apply text-orange-600;
     }
+    .template1-light-bg-color{
+        @apply border-orange-100;
+    }
+    .template1-bg-color{
+        @apply bg-orange-600 text-white;
+    }
+
+    .template2-color{
+        @apply text-blue-600;
+    }
+    .template2-bg-color{
+        @apply bg-blue-600 text-white;
+    }
+    .template1-bg-color2{
+        @apply border-blue-100;
+    }
 }
